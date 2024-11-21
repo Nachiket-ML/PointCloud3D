@@ -31,6 +31,11 @@ def get_point_cloud(vertices):
     point_cloud.points = o3d.utility.Vector3dVector(vertices)
     return point_cloud
 
+def get_uniform_point_cloud(file_path, num_points=10000):
+    mesh = o3d.io.read_triangle_mesh(file_path)
+    sampled_point_cloud = mesh.sample_points_uniformly(number_of_points=num_points)
+    return sampled_point_cloud
+
 def visualize_point_cloud(point_cloud):
     """
     Visualize a point cloud using Open3D.
